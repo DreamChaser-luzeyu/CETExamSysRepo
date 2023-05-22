@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CET考试系统学生注册</title>
+</head>
+
+<body>
+    <h1>注册系统</h1>
+    用户名：<input type="text" id="input_userName"><br>
+    真实姓名：<input type="text" id="input_realName"><br>
+    密 码：<input type="password" id="input_password"><br>
+    <button type="button" id="btn_stu_reg" onclick="btn_stu_reg_onClick()">学生注册</button>
+</body>
+
+<script>
+    var backendUrl = "http://127.0.0.1:28080";
+
+    function btn_stu_reg_onClick() {
+        var userName = document.getElementById("input_userName").value;
+        var realName = document.getElementById("input_realName").value;
+        var password = document.getElementById("input_password").value;
+        console.log("用户名：" + userName + "，真实姓名：" + realName + "，密码：" + password);
+
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', backendUrl + "/StuManagement/registerStudent", true);
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.send("userName=" + userName + "&password=" + password + "&realName=" + realName);
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == 4) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                // alert(feedback);
+                if(feedback == "success") {
+                    alert("注册成功！");
+                    window.location.replace("login.html")
+                }
+                if(feedback == "insufficient_param") {
+                    alert("提交的信息不充足，请检查是否填写所有必要信息。");
+                }
+                if(feedback == "duplicated_student") {
+                    alert("用户已经存在，请直接登录。");
+                }
+                if(feedback == "unknown_error") {
+                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                }
+            }
+        };
+    }
+</script>
+
+</html>

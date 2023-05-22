@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CET考试系统主页</title>
+</head>
+
+<body>
+    <h1>选择功能</h1>
+    <button type="button" id="btn_stu_apply_exam" onclick="btn_stu_apply_exam_onClick()">学生报名考试</button>
+    <button type="button" id="btn_stu_cancel_exam" onclick="btn_stu_cancel_exam_onClick()">学生取消报名考试</button>
+    <button type="button" id="btn_stu_answ_exam" onclick="btn_stu_answ_exam_onClick()">学生答题</button>
+    <button type="button" id="btn_tea_judge" onclick="btn_tea_judge_onClick()">教师阅卷</button>
+</body>
+
+<script>
+    var backendUrl = "http://127.0.0.1:28080";
+
+    function btn_stu_apply_exam_onClick() {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', backendUrl + "/StuManagement/applyExam", true);
+
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.onreadystatechange = function () {
+            // 验证请求是否发送成功
+            if (httpRequest.readyState == 4) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                if(feedback == "success") {
+                    alert("报名成功！");
+                    window.location.replace("index.html")
+                }
+                if(feedback == "student_not_found") {
+                    alert("学生不存在，请检查账号身份是否为学生。");
+                }
+                if(feedback == "unknown_error") {
+                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                }
+            }
+        };
+    }
+
+    function btn_stu_cancel_exam_onClick() {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', backendUrl + "/StuManagement/cancelExam", true);
+
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.onreadystatechange = function () {
+            // 验证请求是否发送成功
+            if (httpRequest.readyState == 4) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                if(feedback == "success") {
+                    alert("取消报名成功！");
+                    window.location.replace("index.html")
+                }
+                if(feedback == "student_not_found") {
+                    alert("学生不存在，请检查账号身份是否为学生。");
+                }
+                if(feedback == "unknown_error") {
+                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                }
+            }
+        };
+    }
+
+    function btn_stu_answ_exam_onClick() {
+        window.location.href = "answer_question.html";
+    }
+
+    function btn_tea_judge_onClick() {
+        window.location.href = "judge_question.html";
+    }
+</script>

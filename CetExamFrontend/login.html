@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CET考试系统登录</title>
+</head>
+
+<body>
+    <h1>登录系统</h1>
+    用户名：<input type="text" id="input_userName"><br>
+    密 码：<input type="password" id="input_password"><br>
+    <button type="button" id="btn_stu_login" onclick="btn_stu_login_onClick()">学生登录</button>
+    <button type="button" id="btn_tea_login" onclick="btn_tea_login_onClick()">教师登录</button>
+    <br>
+    <a href="register.html">学生注册</a>
+</body>
+
+<script>
+    var backendUrl = "http://127.0.0.1:28080";
+
+    function btn_stu_login_onClick() {
+        console.log("btn_login 被点击！");
+        var userName = document.getElementById("input_userName").value;
+        var password = document.getElementById("input_password").value;
+        console.log("用户名：" + userName + "，密码：" + password);
+
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', backendUrl + "/LoginController/studentLogin", true);
+        // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.send("userName=" + userName + "&password=" + password);
+        httpRequest.onreadystatechange = function () {
+            // 验证请求是否发送成功
+            if (httpRequest.readyState == 4) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                if(feedback == "success") {
+                    alert("登录成功！");
+                    window.location.replace("index.html")
+                }
+                if(feedback == "invalid_user") {
+                    alert("用户名或密码错误。");
+                }
+                if(feedback == "unknown_error") {
+                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                }
+            }
+        };
+    }
+
+    function btn_tea_login_onClick() {
+        console.log("btn_login 被点击！");
+        var userName = document.getElementById("input_userName").value;
+        var password = document.getElementById("input_password").value;
+        console.log("用户名：" + userName + "，密码：" + password);
+
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.withCredentials = true;
+        httpRequest.open('POST', backendUrl + "/LoginController/teacherLogin", true);
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.send("userName=" + userName + "&password=" + password);
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState == XMLHttpRequest.DONE) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                
+                // Not allowed
+                // var sessionID = httpRequest.getResponseHeader("Set-Cookie");
+                // console.log("sessionID: " + sessionID);
+                
+                
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                if(feedback == "success") {
+                    
+                    
+                    
+                    
+                    alert("登录成功！");
+                    window.location.replace("index.html")
+                }
+                if(feedback == "invalid_user") {
+                    alert("用户名或密码错误。");
+                }
+                if(feedback == "unknown_error") {
+                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                }
+            }
+        };
+    }
+</script>
+
+</html>

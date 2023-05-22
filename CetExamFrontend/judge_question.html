@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CET阅卷系统</title>
+</head>
+
+<body>
+    <button type="button" id="btn_refresh_answ" onclick="btn_refresh_answ_onClick()">刷新作答列表</button>
+    <h4>作答列表：</h4>
+    <table border="1">
+        <tr>
+            <td>用户名</td>
+            <td>选择题得分</td>
+            <td>主观题得分</td>
+        </tr>
+    </table>
+</body>
+
+<script>
+    var backendUrl = "http://127.0.0.1:28080";
+
+    function btn_refresh_answ_onClick() {
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.withCredentials = true;
+        httpRequest.open('GET', backendUrl + "/ExamController/getAllAnswers", true);
+        console.log("Req sent");
+
+        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpRequest.send();
+        httpRequest.onreadystatechange = function () {
+            console.log("Resp recv");
+            // 验证请求是否发送成功
+            if (httpRequest.readyState == 4) {
+                console.log("HTTP Status Code: " + httpRequest.status);
+                var json = httpRequest.responseText;
+                console.log(json);
+
+                var feedback = JSON.parse(json).feedback;
+                
+                var answersArr = JSON.parse(json).message;
+                console.log(answersArr);
+
+            }
+        };
+    }
+
+</script>
