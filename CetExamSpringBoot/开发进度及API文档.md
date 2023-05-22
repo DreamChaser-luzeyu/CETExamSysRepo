@@ -1,0 +1,58 @@
+# 说明
+
+### 技术栈说明
+
+#### 后端
+
+- Maven
+
+- SpringBoot
+
+- MyBatisPlus
+
+- Alibaba Fastjson
+
+#### 前端
+
+目前没有使用任何依赖
+
+- HTML+JavaScript
+
+### 部署及测试说明
+
+由于前后端完全分离，且开发阶段没有使用Nginx进行反向代理，因此需要注意跨域问题。跨域访问会带来两个问题，第一是浏览器会限制由JS脚本发起的跨域请求，导致无法正常完成请求（尽管这个请求实际已经发出去了），第二是跨域会导致浏览器安全机制不允许JS读取相应内容，从而cookie无法正常存储，导致后端无法获得后续请求的JSESSIONID。
+
+下面列出的修改仅为开发服务，当使用Nginx反向代理后，前后端往往处在同一域名内（当然端口也相同），也就不再需要下面所设置的请求头了。
+
+下面列出跨域访问需要修改的几处。
+
+#### 后端
+
+`LoginFilter/doFilter()`方法：
+
+```java
+// TODO: 部署后删去
+response.setHeader("Access-Control-Allow-Origin", "http://localhost:52330");
+response.setHeader("Access-Control-Allow-Credentials", "true");
+```
+
+`"Access-Control-Allow-Origin"`标注了允许哪些来源的请求。值得注意的是，这种安全机制并不由后端校验，而是由浏览器进行校验。其中，`"http://localhost:52330"`需要替换为你的前端的访问地址（包含"http://"前缀以及端口号）。这里的`"http://localhost:52330"`不可替换成`"*"`，因为规范不允许Allow-Credentials和来源为*的Allow-Origin同时使用。
+
+`"Access-Control-Allow-Credentials"`显式地将相应内容暴露给JS脚本，从而脚本才能获得登录后后端生成的JSESSIONID。
+
+#### 前端
+
+所有发送请求处：
+
+```javascript
+var httpRequest = new XMLHttpRequest();
+httpRequest.withCredentials = true; // 新增这句
+```
+
+加上`httpRequest.withCredentials = true;`后，前端发往后端的请求才会带上登录后生成的JSESSIONID，后续的请求才不会被后端的过滤器拦截。
+
+前端发起`httpRequest.withCredentials = true`这样的请求的前提是后端的响应头带有`"Access-Control-Allow-Credentials"`。
+
+### API文档
+
+API部分使用Apifox工具管理。
