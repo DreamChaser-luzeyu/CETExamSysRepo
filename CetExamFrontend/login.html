@@ -4,66 +4,146 @@
 <head>
     <meta charset="utf-8">
     <title>CET考试系统登录</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/my-login.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/my-login.css">
 </head>
 
 <body class="my-login-page">
-	<section class="h-100">
-		<div class="container h-100">
-			<div class="row justify-content-md-center h-100">
-				<div class="card-wrapper">
-					<div class="brand">
-						<img src="img/CET_logo.png">
-					</div>
-					<div class="card fat">
-						<div class="card-body">
-							<h4 class="card-title">Login</h4>
-							<form method="POST">
-							 
-								<div class="form-group">
-									<label for="username">Username</label>
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-md-center h-100">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        <img src="img/CET_logo.png">
+                    </div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Login</h4>
+                            <form method="POST">
+
+                                <div class="form-group">
+                                    <label for="username">Username</label>
                                     <input type="text" id="input_userName" class="form-control" required autofocus>
-								</div>
+                                </div>
 
-								<div class="form-group">
-									<label for="password">Password
-										<a href="forgot.html" class="float-right">
-											Forgot Password?
-										</a>
-									</label>
+                                <div class="form-group">
+                                    <label for="password">Password
+                                        <a href="forgot.html" class="float-right">
+                                            Forgot Password?
+                                        </a>
+                                    </label>
                                     <input type="password" id="input_password" class="form-control" required data-eye>
-									<!-- <input id="password" type="password" class="form-control" name="password" required data-eye> -->
-								</div>
+                                    <!-- <input id="password" type="password" class="form-control" name="password" required data-eye> -->
+                                </div>
 
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
 
-								<div class="form-group no-margin">
-									<button type="button" id="btn_stu_login" class="btn btn-primary btn-block" onclick="btn_stu_login_onClick()">
+                                <div class="form-group no-margin">
+                                    <button type="button" id="btn_stu_login" class="btn btn-primary btn-block"
+                                        onclick="btn_stu_login_onClick()">
                                         Student login
-									</button>
-                                    <button type="button" id="btn_tea_login" class="btn btn-primary btn-block" onclick="btn_tea_login_onClick()">
-										Teacher login
-									</button>
-								</div>
-								<div class="margin-top20 text-center">
-									Don't have an account? <a href="register.html">Create One</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                                    </button>
+                                    <button type="button" id="btn_tea_login" class="btn btn-primary btn-block"
+                                        onclick="btn_tea_login_onClick()">
+                                        Teacher login
+                                    </button>
+                                </div>
+                                <div class="margin-top20 text-center">
+                                    Don't have an account? <a href="register.html">Create One</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/my-login.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/my-login.js"></script>
+    <script>
+        var backendUrl = "http://127.0.0.1:28080";
+
+        function btn_stu_login_onClick() {
+            console.log("btn_login 被点击！");
+            var userName = document.getElementById("input_userName").value;
+            var password = document.getElementById("input_password").value;
+            console.log("用户名：" + userName + "，密码：" + password);
+
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', backendUrl + "/LoginController/studentLogin", true);
+            // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+            httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.send("userName=" + userName + "&password=" + password);
+            httpRequest.onreadystatechange = function () {
+                // 验证请求是否发送成功
+                if (httpRequest.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequest.status);
+                    var json = httpRequest.responseText;
+                    console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
+                    if (feedback == "success") {
+                        alert("登录成功！");
+                        window.location.replace("index.html")
+                    }
+                    if (feedback == "invalid_user") {
+                        alert("用户名或密码错误。");
+                    }
+                    if (feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+        }
+
+        function btn_tea_login_onClick() {
+            console.log("btn_login 被点击！");
+            var userName = document.getElementById("input_userName").value;
+            var password = document.getElementById("input_password").value;
+            console.log("用户名：" + userName + "，密码：" + password);
+
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.withCredentials = true;
+            httpRequest.open('POST', backendUrl + "/LoginController/teacherLogin", true);
+            httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.send("userName=" + userName + "&password=" + password);
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState == XMLHttpRequest.DONE) {
+                    console.log("HTTP Status Code: " + httpRequest.status);
+
+                    // Not allowed
+                    // var sessionID = httpRequest.getResponseHeader("Set-Cookie");
+                    // console.log("sessionID: " + sessionID);
+
+
+                    var json = httpRequest.responseText;
+                    console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
+                    if (feedback == "success") {
+
+
+
+
+                        alert("登录成功！");
+                        window.location.replace("index.html")
+                    }
+                    if (feedback == "invalid_user") {
+                        alert("用户名或密码错误。");
+                    }
+                    if (feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+        }
+    </script>
 </body>
 
 
@@ -77,83 +157,6 @@
     <a href="register.html">学生注册</a>
 </body> -->
 
-<script>
-    var backendUrl = "http://127.0.0.1:28080";
 
-    function btn_stu_login_onClick() {
-        console.log("btn_login 被点击！");
-        var userName = document.getElementById("input_userName").value;
-        var password = document.getElementById("input_password").value;
-        console.log("用户名：" + userName + "，密码：" + password);
-
-        var httpRequest = new XMLHttpRequest();
-        httpRequest.open('POST', backendUrl + "/LoginController/studentLogin", true);
-        // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        httpRequest.send("userName=" + userName + "&password=" + password);
-        httpRequest.onreadystatechange = function () {
-            // 验证请求是否发送成功
-            if (httpRequest.readyState == 4) {
-                console.log("HTTP Status Code: " + httpRequest.status);
-                var json = httpRequest.responseText;
-                console.log(json);
-
-                var feedback = JSON.parse(json).feedback;
-                if(feedback == "success") {
-                    alert("登录成功！");
-                    window.location.replace("index.html")
-                }
-                if(feedback == "invalid_user") {
-                    alert("用户名或密码错误。");
-                }
-                if(feedback == "unknown_error") {
-                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                }
-            }
-        };
-    }
-
-    function btn_tea_login_onClick() {
-        console.log("btn_login 被点击！");
-        var userName = document.getElementById("input_userName").value;
-        var password = document.getElementById("input_password").value;
-        console.log("用户名：" + userName + "，密码：" + password);
-
-        var httpRequest = new XMLHttpRequest();
-        httpRequest.withCredentials = true;
-        httpRequest.open('POST', backendUrl + "/LoginController/teacherLogin", true);
-        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        httpRequest.send("userName=" + userName + "&password=" + password);
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == XMLHttpRequest.DONE) {
-                console.log("HTTP Status Code: " + httpRequest.status);
-                
-                // Not allowed
-                // var sessionID = httpRequest.getResponseHeader("Set-Cookie");
-                // console.log("sessionID: " + sessionID);
-                
-                
-                var json = httpRequest.responseText;
-                console.log(json);
-
-                var feedback = JSON.parse(json).feedback;
-                if(feedback == "success") {
-                    
-                    
-                    
-                    
-                    alert("登录成功！");
-                    window.location.replace("index.html")
-                }
-                if(feedback == "invalid_user") {
-                    alert("用户名或密码错误。");
-                }
-                if(feedback == "unknown_error") {
-                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                }
-            }
-        };
-    }
-</script>
 
 </html>
