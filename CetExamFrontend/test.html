@@ -623,10 +623,7 @@
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequest1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest1.withCredentials = true;
-            httpRequest2.withCredentials = true;
-            httpRequest1.send(object_answer);
-            httpRequest1.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
-            httpRequest1.send(subject_answer);
+            httpRequest1.send(stringify(object_answer));
             httpRequest1.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest1.readyState == 4) {
@@ -646,15 +643,11 @@
             };
 
             var httpRequest2 = new XMLhttpRequest();
-
-            httpRequest2.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
+            httpRequest2.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequest2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest2.withCredentials = true;
-            httpRequest2.withCredentials = true;
-            httpRequest2.send(object_answer);
-            httpRequest2.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
-            httpRequest2.send(subject_answer);
+            httpRequest2.send(stringify(subject_answer));
             httpRequest2.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest2.readyState == 4) {
