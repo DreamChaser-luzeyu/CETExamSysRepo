@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CET阅卷系统</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/iconfont.css" rel="stylesheet" type="text/css" />
+    <link href="css/test.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="main">
+		<!--nr start-->
+		<div class="test_main">
+			<div class="nr_left">
+				<div class="test">
+					<form action="" method="post">
+						<div class="test_title">
+                            <!-- TODO 提交阅卷结果 -->
+							<font><input type="button" name="btn_submit" value="提交"></font>
+						</div>
+                        <!-- 单选题 -->
+                        <div class="test_content">
+                            <label for="username">用户名：</label>
+                            <input type="text" id="userName" style="width: 100px;" readonly>
+
+                            <div class="test_content_title">
+                                <h2>一、单选题</h2>
+                                <p>
+                                    <span>共</span><i class="content_lit">10</i><span>题，</span><span>合计</span><i class="content_fs">10</i><span>分</span>
+                                </p>
+                            </div>
+                            <!-- 客观题自动阅卷 -->
+                            <div class="test_content_nr">
+                                <ul>
+                                    <li id="qu_1">
+                                        <!-- TODO 为自动阅卷添加事件 -->
+                                        <div class="test_content_nr_tt">
+							                <input type="button" name="btn_auto_judge" value="自动阅卷">
+                                        </div>
+                                        <!-- TODO 点击自动阅卷，展示考生客观题得分 -->
+                                        <div class="test_content_nr_main">
+									        <label>考生得分</label>
+                                            <input type="text" id="qu_1_grade" style="width: 20px;" readonly>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+
+                        <!-- 主观题 -->
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>二、主观题</h2>
+                                <p>
+                                    <span>共</span><i class="content_lit">2</i><span>题，</span><span>合计</span><i class="content_fs">30</i><span>分</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 主观题打分 -->
+                        <div class="test_content_nr">
+                            <ul>
+                                <li id="qu_2_1">
+                                    <div class="test_content_nr_tt">
+                                        <i>1</i><span>Writing  (15分)</span>
+                                        <b class="icon iconfont">
+                                            该题得分：
+                                            <!-- TODO 判断输入是否合法 -->
+                                            <input type="text" id="qu_2_1_grade" style="width: 20px;height: 20px; border-color: red;">
+                                        </b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <textarea id ="2_answer_1" cols="100" rows="10" style="overflow:scroll;" readonly></textarea>
+                                    </div>
+                                </li>
+
+                                <li id="qu_2_2">
+                                    <div class="test_content_nr_tt">
+                                        <i>2</i><span>Translation  (15分)</span>
+                                        <b class="icon iconfont">
+                                            该题得分：
+                                            <!-- TODO 判断输入是否合法 -->
+                                            <input type="text" id="qu_2_2_grade" style="width: 20px;height: 20px; border-color: red;">
+                                        </b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <textarea id ="2_answer_2" cols="100" rows="10" style="overflow:scroll;" readonly></textarea>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--nr end-->
+		<div class="foot"></div>
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.easy-pie-chart.js"></script>
+
+    <!-- TODO 显示考生主观题作答内容 -->
+</body>
