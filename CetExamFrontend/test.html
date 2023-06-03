@@ -617,13 +617,13 @@
             console.log(subject_answer);
 
 
-            var httpRequest1 = new XMLhttpRequest();
+            var httpRequest1 = new XMLHttpRequest();
 
             httpRequest1.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequest1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest1.withCredentials = true;
-            httpRequest1.send(stringify(object_answer));
+            httpRequest1.send("choiceQuestionAnswer=" + encodeURI(JSON.stringify(object_answer)));
             httpRequest1.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest1.readyState == 4) {
@@ -642,12 +642,12 @@
                 }
             };
 
-            var httpRequest2 = new XMLhttpRequest();
+            var httpRequest2 = new XMLHttpRequest();
             httpRequest2.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequest2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest2.withCredentials = true;
-            httpRequest2.send(stringify(subject_answer));
+            httpRequest2.send("subjectiveQuestionAnswer=" + encodeURI(JSON.stringify(subject_answer)));
             httpRequest2.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest2.readyState == 4) {
