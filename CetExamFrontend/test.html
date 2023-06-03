@@ -30,6 +30,9 @@
 								<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">01:40</b>
 							</p>
 							<font><input type="button" name="test_jiaojuan" value="交卷" onclick="btn_send_answer_onClick()"></font>
+                            <a href="exam.pdf" target="_blank">
+                                <input type="button" name="open_exam" value="打开试题" style="border: none; background-color: #389fc3; font-size: medium; color: white; padding: 12px 10px;">
+                            </a >
 						</div>
                         <!-- 单选题 -->
                         <div class="test_content">
@@ -573,6 +576,8 @@
 			});
 		});
 
+        var backendUrl = "http://127.0.0.1:28080";
+
         function btn_send_answer_onClick() {
             var answerArr = new Array(10);
             $("[name='single']").each(function(index){
@@ -613,11 +618,12 @@
 
 
             var httpRequest = new XMLHttpRequest();
-            httpRequest.open('POST', backendUrl + "/LoginController/studentLogin", true);
+            httpRequest.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequest.withCredentials = true;
             httpRequest.send(object_answer);
+            httpRequest.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
             httpRequest.send(subject_answer);
             httpRequest.onreadystatechange = function () {
                 // 验证请求是否发送成功
