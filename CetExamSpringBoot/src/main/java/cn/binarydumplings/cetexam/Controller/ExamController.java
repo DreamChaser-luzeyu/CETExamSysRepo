@@ -135,8 +135,16 @@ public class ExamController {
         return responseData;
     }
 
-    public static Integer gradeChoiceQuestionAnswer(String correctAnswer, String stuAnswer) {
-        return 100;
+    @RequestMapping("/getAnswerByStuUserName")
+    public ResponseData getAnswerByStuUserName(@RequestParam("stuUserName") String stuUserName) {
+        ResponseData responseData = ResponseData.GenericSuccessFeedback;
+        Answer answer = answerService.getAnswerByStuUserName(stuUserName);
+        responseData.setMessage(JSONObject.toJSONString(answer));
+        return responseData;
     }
+
+//    public static Integer gradeChoiceQuestionAnswer(String correctAnswer, String stuAnswer) {
+//        return 100;
+//    }
 
 }

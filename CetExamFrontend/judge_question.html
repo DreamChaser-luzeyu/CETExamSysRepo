@@ -9,17 +9,30 @@
 <body>
     <button type="button" id="btn_refresh_answ" onclick="btn_refresh_answ_onClick()">刷新作答列表</button>
     <h4>作答列表：</h4>
-    <table border="1">
+    <table border="1" id="table_answers">
         <tr>
             <td>用户名</td>
             <td>选择题得分</td>
             <td>主观题得分</td>
+            <td>阅卷按钮</td>
+        </tr>
+        <tr>
+            <td>测试学生</td>
+            <td>1</td>
+            <td>1</td>
         </tr>
     </table>
+
+
 </body>
 
 <script>
     var backendUrl = "http://127.0.0.1:28080";
+
+    function btn_judge_onClick(stuUserName) {
+        console.log(stuUserName);
+        window.location.replace("mark.html?stuUserName=" + stuUserName);
+    };
 
     function btn_refresh_answ_onClick() {
         var httpRequest = new XMLHttpRequest();
@@ -42,8 +55,40 @@
                 var answersArr = JSON.parse(json).message;
                 console.log(answersArr);
 
+                var answersArrParsed = JSON.parse(answersArr);
+
+                var htmlStr = "<tbody>";
+
+                htmlStr += "<tr><td>用户名</td><td>选择题得分</td><td>主观题得分</td><td>阅卷按钮</td></tr>";
+
+                console.log("Answers:" + answersArrParsed.length);
+                for (let i = 0; i < answersArrParsed.length; i++) {
+                    console.log(answersArrParsed[i]);
+
+                    var answItem = 
+                        "<tr><td>" + answersArrParsed[i].stuUserName + "</td>" + 
+                        "<td>" + answersArrParsed[i].choiceQuestionGrade + "</td>" + 
+                        "<td>" + answersArrParsed[i].subjectiveQuestionGrade + "</td>" + 
+                        "<td>" + "<button id=\"" + answersArrParsed[i].stuUserName + "\" onclick=\"btn_judge_onClick(id)\" >阅卷</button>" + "</td>" + 
+                        "</tr>"
+                    
+                    htmlStr += answItem;
+
+                }
+
+                htmlStr += "</tbody>";
+
+
+                var table = document.getElementById("table_answers");
+                table.innerHTML = htmlStr;
+
+                
+
+                console.log(table.innerHTML);
             }
         };
+
+        
     }
 
 </script>

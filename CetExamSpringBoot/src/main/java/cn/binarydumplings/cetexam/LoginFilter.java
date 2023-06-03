@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
             "/HelloController/(.*)",
             "/LoginController/(.*)",
             "/StuManagement/(.*)",
-            "/ExamController/judgeSubjectiveQuestion(.*)",
+            "/ExamController/(.*)",
     };
 
     // 特权教师用户允许访问的页面（全部功能）
