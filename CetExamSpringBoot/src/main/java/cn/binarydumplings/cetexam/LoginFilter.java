@@ -65,7 +65,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         // TODO: 部署后删去
-        response.setHeader("Access-Control-Allow-Origin", "http://localhost:52330");
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:5500");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         // 获得用户访问的URL

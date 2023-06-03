@@ -81,9 +81,27 @@ public class ExamController {
     }
 
     @RequestMapping("/judgeChoiceQuestion")
-    public ResponseData judgeChoiceQuestion(HttpServletRequest request){
+    public ResponseData judgeChoiceQuestion(@RequestParam("stuUserName") String stuUserName,
+                                            HttpServletRequest request){
+        // 查询Answer对象
+        Answer answer = answerService.getAnswerByStuUserName(stuUserName);
+        // 检查answer是否有效
+        if(answer == null) {
+            return ResponseData.scoreQuestionAnswerNotFoundFeedback;
+        }
+        // 填入分数
+        answer.setChoiceQuestionGrade(AnswerService.calculateChoiceQuestionGrade(answer.getChoiceQuestionAnswer()));
+        // 更新选择题分数
+        Integer feedback = answerService.judgeChoiceQuestion(answer);
 
-        return ResponseData.scoreChoiceQuestionSuccessFeedback;
+        if(AnswerService.JUDGE_SAVE_SUCCESS.equals(feedback)) {
+            ResponseData responseData = ResponseData.scoreChoiceQuestionSuccessFeedback;
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("choice_question_grade", answer.getChoiceQuestionGrade());
+            responseData.setMessage(jsonObject.toJSONString());
+            return responseData;
+        }
+        return ResponseData.scoreSubjectiveQuestionUnknownErrorFeedback;
     }
 
     @RequestMapping("/judgeSubjectiveQuestion")
@@ -98,7 +116,9 @@ public class ExamController {
         if(answer == null) {
             return ResponseData.scoreQuestionAnswerNotFoundFeedback;
         }
+        // 填入分数
         answer.setSubjectiveQuestionGrade(subjectiveQuestionGrade);
+        // 更新主观题分数
         Integer feedback = answerService.judgeSubjectiveQuestion(answer);
         if(AnswerService.JUDGE_SAVE_SUCCESS.equals(feedback)) {
             return ResponseData.scoreSubjectiveQuestionSuccessFeedback;

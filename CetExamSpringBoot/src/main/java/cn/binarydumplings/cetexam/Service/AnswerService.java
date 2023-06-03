@@ -2,12 +2,14 @@ package cn.binarydumplings.cetexam.Service;
 
 import cn.binarydumplings.cetexam.Bean.Answer;
 import cn.binarydumplings.cetexam.Mapper.AnswerMapper;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AnswerService {
@@ -120,6 +122,32 @@ public class AnswerService {
                 return ANSWER_SAVE_FAIL;
             }
         }
+    }
+
+    public static Integer calculateChoiceQuestionGrade(String choiceQuestionAnswer) {
+        JSONObject standardAnswerJSONObj = new JSONObject();
+        standardAnswerJSONObj.put("1", "A");
+        standardAnswerJSONObj.put("2", "B");
+        standardAnswerJSONObj.put("3", "C");
+        standardAnswerJSONObj.put("4", "D");
+
+
+        JSONObject stuAnswerJSONObject = JSONObject.parseObject(choiceQuestionAnswer);
+
+
+        Integer choiceQuestionGrade = 0;
+
+        for(Map.Entry<String, Object> e : standardAnswerJSONObj.entrySet()) {
+            String questionNum = e.getKey();
+            String questionStandardAnswer = (String) e.getValue();
+            String questionStuAnswer = (String) stuAnswerJSONObject.get(questionNum);
+
+            if(questionStandardAnswer.equals(questionStuAnswer)) {
+                choiceQuestionGrade ++;
+            }
+        }
+
+        return choiceQuestionGrade;
     }
 
     public Integer judgeSubjectiveQuestion(Answer answer) {
