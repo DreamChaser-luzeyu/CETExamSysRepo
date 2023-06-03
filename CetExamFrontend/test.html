@@ -617,23 +617,23 @@
             console.log(subject_answer);
 
 
-            var httpRequest1 = new XMLHttpRequest();
-
-            httpRequest1.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
+            var httpRequestChoiceQuestion = new XMLHttpRequest();
+            httpRequestChoiceQuestion.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-            httpRequest1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            httpRequest1.withCredentials = true;
-            httpRequest1.send("choiceQuestionAnswer=" + encodeURI(JSON.stringify(object_answer)));
-            httpRequest1.onreadystatechange = function () {
+            httpRequestChoiceQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequestChoiceQuestion.withCredentials = true;
+            httpRequestChoiceQuestion.send("choiceQuestionAnswer=" + encodeURI(JSON.stringify(object_answer)));
+            httpRequestChoiceQuestion.onreadystatechange = function () {
                 // 验证请求是否发送成功
-                if (httpRequest1.readyState == 4) {
-                    console.log("HTTP Status Code: " + httpRequest1.status);
-                    var json = httpRequest1.responseText;
+                if (httpRequestChoiceQuestion.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequestChoiceQuestion.status);
+                    var json = httpRequestChoiceQuestion.responseText;
                     console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
     
                     if(feedback == "success") {
-                        alert("保存成功");
-                        window.location.replace("index.html")
+                        alert("选择题保存成功");
                     }
 
                     if(feedback == "unknown_error") {
@@ -642,22 +642,23 @@
                 }
             };
 
-            var httpRequest2 = new XMLHttpRequest();
-            httpRequest2.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
+            var httpRequestSubjectiveQuestion = new XMLHttpRequest();
+            httpRequestSubjectiveQuestion.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-            httpRequest2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            httpRequest2.withCredentials = true;
-            httpRequest2.send("subjectiveQuestionAnswer=" + encodeURI(JSON.stringify(subject_answer)));
-            httpRequest2.onreadystatechange = function () {
+            httpRequestSubjectiveQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequestSubjectiveQuestion.withCredentials = true;
+            httpRequestSubjectiveQuestion.send("subjectiveQuestionAnswer=" + encodeURI(JSON.stringify(subject_answer)));
+            httpRequestSubjectiveQuestion.onreadystatechange = function () {
                 // 验证请求是否发送成功
-                if (httpRequest2.readyState == 4) {
-                    console.log("HTTP Status Code: " + httpRequest2.status);
-                    var json = httpRequest2.responseText;
+                if (httpRequestSubjectiveQuestion.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequestSubjectiveQuestion.status);
+                    var json = httpRequestSubjectiveQuestion.responseText;
                     console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
     
                     if(feedback == "success") {
-                        alert("保存成功");
-                        window.location.replace("index.html")
+                        alert("主观题保存成功");
                     }
 
                     if(feedback == "unknown_error") {
