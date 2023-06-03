@@ -64,7 +64,7 @@
 	</section>
 
 	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/bootstrap.bundle.js"></script>
 	<script src="js/my-login.js"></script>
 </body>
 
@@ -96,7 +96,7 @@
                 console.log(json);
 
                 var feedback = JSON.parse(json).feedback;
-                // alert(feedback);
+                alert(feedback);
                 if(feedback == "success") {
                     alert("注册成功！");
                     window.location.replace("login.html")
