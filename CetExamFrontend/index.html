@@ -4,78 +4,197 @@
 <head>
     <meta charset="utf-8">
     <title>CET考试系统主页</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 
 <body>
-    <h1>选择功能</h1>
-    <button type="button" id="btn_stu_apply_exam" onclick="btn_stu_apply_exam_onClick()">学生报名考试</button>
-    <button type="button" id="btn_stu_cancel_exam" onclick="btn_stu_cancel_exam_onClick()">学生取消报名考试</button>
-    <button type="button" id="btn_stu_answ_exam" onclick="btn_stu_answ_exam_onClick()">学生答题</button>
-    <button type="button" id="btn_tea_judge" onclick="btn_tea_judge_onClick()">教师阅卷</button>
+    <div id="Body">
+        <div id="Header">
+            <div class="header-top">
+                <div class="header-top-con">
+                    <div style="float:left;text-align:left;line-height:35px;font-size:12px;padding-left:0px">
+                        <a href="//www.neea.edu.cn/">中国教育考试网</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logonline">
+                <div class="w1150">
+                    <div class="header_bottom">
+                        <div class="CurrentlyImg">
+                            <span>
+                                <a href="index.html" target="_self">
+                                    <img src="img/index_head.jpg" alt="全国大学英语四、六级考试(CET)">
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Content">
+            <div id="Content1">
+                <div class="logonline" style="height:320px;background:url(img/Content1_background.jpg) no-repeat  center bottom;">
+                    <div class="w1150" id="rightBg">
+                        <div class="object_key">
+                            <span id="ReportIDname">
+                                <a href="/html1/report/2303/329-1.htm" target="_blank" title="2023年上半年全国大学英语四、六级考试报名工作启动">
+                                    2023年上半年全国大学英语四、六级考试报名工作启动
+                                </a>
+                            </span>
+                            <span id="ReportIDLogograph">
+                                2023年上半年考试笔试及口试将分别于6月17日，5月20至21日举行，各地报名工作陆续启动。
+                            </span>
+                        </div>
+                        <div class="object_list">
+                            <ul>
+                                <li>
+                                    <span id="ReportIDname">
+                                        <a href="/html1/report/2304/363-1.htm" target="_blank" title="2022年下半年全国大学英语四、六级考试加考（3月）<br>成绩查询有关安排">
+                                            2022年下半年全国大学英语四、六级考试加考（3月）<br>成绩查询有关安排
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span id="ReportIDname">
+                                        <a href="/html1/report/2302/269-1.htm" target="_blank" title="2022年下半年（12月）全国大学英语四、六级考试（CET）<br>成绩查询有关安排">
+                                            2022年下半年（12月）全国大学英语四、六级考试（CET）<br>成绩查询有关安排...
+                                        </a>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="moreClass">
+                                <a href="/html1/category/16093/1124-1.htm" style="color:#FE8500">更多&gt;&gt;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                .object_news_list{float:right;width:410px;padding-top:78px;}
+                .object_news_list li{height:30px;padding-left:11px;text-align:left;background:url(/res/Home/structure/object_newslist_bg.gif) no-repeat left 8px;font-size:14px}
+                </style>
+            </div>
+            
+            <div id="Content2">
+                <div class="funbox fun01">
+                    <a href="/html1/folder/16033/247-1.htm">
+                        <div class="fun-title"> 项目介绍 </div>
+                    </a>
+                    <div class="fun-con">
+                        <span id="Description">全国大学英语四、六级考试(CET)系教育部主办、教育部教育考试院（原教育部考试中…</span>
+                    </div>
+                    <div class="mores">
+                        <a class="" href="/html1/folder/16033/247-1.htm">详细&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="funbox fun02">
+                    <a href="/html1/folder/16113/1586-1.htm">
+                        <div class="fun-title">CET笔试</div>
+                    </a>
+                    <div class="fun-con">
+                        <span id="Description">CET笔试每年开考两次，分别于6月和12月举行，具体考试时间我中心将会在每年年初…</span>
+                    </div>
+                    <div class="mores">
+                        <a href="/html1/folder/16113/1586-1.htm">详细&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="funbox fun03">
+                    <a href="/html1/folder/16113/1587-1.htm">
+                        <div class="fun-title">CET口试</div>
+                    </a>
+                    <div class="fun-con">
+                        <span id="Description">CET口试每年开考两次，分别于5月和11月举行，具体考试时间我中心将会在每年年初…</span>
+                    </div>
+                    <div class="mores">
+                        <a href="/html1/folder/16113/1587-1.htm">详细&gt;&gt;</a>
+                    </div>
+                </div>
+                <div class="funbox fun04" style="float:right;margin-left:0">
+                    <div class="fun-title"> 考生服务 </div>
+                    <div class="fun-con2">
+                        <dl>
+                            <!-- <dd><a href="http://cet-bm.neea.edu.cn/" target="_blank">在线报名</a></dd>
+                            <dd><a id="results_CET" href="//cet.neea.edu.cn/cet/" target="_blank">成绩查询</a></dd>
+                            <dd><a href="//bbcjzm.neea.edu.cn/" target="_blank">补办成绩证明</a></dd>
+                            <dd><a href="/html1/category/16123/566-1.htm" style="font-size:12px">口语考试系统培训</a></dd>
+                            <dd><a href="/html1/folder/19081/5179-1.htm">成绩核查</a></dd>
+                            <dd><a href="/html1/folder/19081/5180-1.htm">成绩证明</a></dd> -->
+
+                            <dd><button type="button" id="btn_stu_apply_exam" onclick="btn_stu_apply_exam_onClick()">报名考试</button></dd>
+                            <dd><button type="button" id="btn_stu_cancel_exam" onclick="btn_stu_cancel_exam_onClick()">取消报名</button></dd>
+                            <dd><button type="button" id="btn_stu_answ_exam" onclick="btn_stu_answ_exam_onClick()">学生答题</button></dd>
+                            <dd><button type="button" id="btn_tea_judge" onclick="btn_tea_judge_onClick()">教师阅卷</button></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var backendUrl = "http://127.0.0.1:28080";
+    
+        function btn_stu_apply_exam_onClick() {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', backendUrl + "/StuManagement/applyExam", true);
+    
+            httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.onreadystatechange = function () {
+                // 验证请求是否发送成功
+                if (httpRequest.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequest.status);
+                    var json = httpRequest.responseText;
+                    console.log(json);
+    
+                    var feedback = JSON.parse(json).feedback;
+                    if(feedback == "success") {
+                        alert("报名成功！");
+                        window.location.replace("index.html")
+                    }
+                    if(feedback == "student_not_found") {
+                        alert("学生不存在，请检查账号身份是否为学生。");
+                    }
+                    if(feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+        }
+    
+        function btn_stu_cancel_exam_onClick() {
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', backendUrl + "/StuManagement/cancelExam", true);
+    
+            httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.onreadystatechange = function () {
+                // 验证请求是否发送成功
+                if (httpRequest.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequest.status);
+                    var json = httpRequest.responseText;
+                    console.log(json);
+    
+                    var feedback = JSON.parse(json).feedback;
+                    if(feedback == "success") {
+                        alert("取消报名成功！");
+                        window.location.replace("index.html")
+                    }
+                    if(feedback == "student_not_found") {
+                        alert("学生不存在，请检查账号身份是否为学生。");
+                    }
+                    if(feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+        }
+    
+        function btn_stu_answ_exam_onClick() {
+            window.location.href = "answer_question.html";
+        }
+    
+        function btn_tea_judge_onClick() {
+            window.location.href = "judge_question.html";
+        }
+    </script>
 </body>
 
-<script>
-    var backendUrl = "http://127.0.0.1:28080";
-
-    function btn_stu_apply_exam_onClick() {
-        var httpRequest = new XMLHttpRequest();
-        httpRequest.open('POST', backendUrl + "/StuManagement/applyExam", true);
-
-        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        httpRequest.onreadystatechange = function () {
-            // 验证请求是否发送成功
-            if (httpRequest.readyState == 4) {
-                console.log("HTTP Status Code: " + httpRequest.status);
-                var json = httpRequest.responseText;
-                console.log(json);
-
-                var feedback = JSON.parse(json).feedback;
-                if(feedback == "success") {
-                    alert("报名成功！");
-                    window.location.replace("index.html")
-                }
-                if(feedback == "student_not_found") {
-                    alert("学生不存在，请检查账号身份是否为学生。");
-                }
-                if(feedback == "unknown_error") {
-                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                }
-            }
-        };
-    }
-
-    function btn_stu_cancel_exam_onClick() {
-        var httpRequest = new XMLHttpRequest();
-        httpRequest.open('POST', backendUrl + "/StuManagement/cancelExam", true);
-
-        httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        httpRequest.onreadystatechange = function () {
-            // 验证请求是否发送成功
-            if (httpRequest.readyState == 4) {
-                console.log("HTTP Status Code: " + httpRequest.status);
-                var json = httpRequest.responseText;
-                console.log(json);
-
-                var feedback = JSON.parse(json).feedback;
-                if(feedback == "success") {
-                    alert("取消报名成功！");
-                    window.location.replace("index.html")
-                }
-                if(feedback == "student_not_found") {
-                    alert("学生不存在，请检查账号身份是否为学生。");
-                }
-                if(feedback == "unknown_error") {
-                    alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                }
-            }
-        };
-    }
-
-    function btn_stu_answ_exam_onClick() {
-        window.location.href = "answer_question.html";
-    }
-
-    function btn_tea_judge_onClick() {
-        window.location.href = "judge_question.html";
-    }
-</script>
