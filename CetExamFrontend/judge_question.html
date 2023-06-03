@@ -26,7 +26,6 @@
         httpRequest.withCredentials = true;
         httpRequest.open('GET', backendUrl + "/ExamController/getAllAnswers", true);
         console.log("Req sent");
-
         httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         httpRequest.send();
         httpRequest.onreadystatechange = function () {
@@ -39,8 +38,12 @@
 
                 var feedback = JSON.parse(json).feedback;
                 
-                var answersArr = JSON.parse(json).message;
+                var answersArr = JSON.parse(JSON.parse(json).message);
                 console.log(answersArr);
+
+                console.log("answer0:");
+                var answer0 = answersArr[0];
+                console.log(answer0);
 
             }
         };
