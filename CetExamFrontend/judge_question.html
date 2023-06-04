@@ -4,25 +4,90 @@
 <head>
     <meta charset="utf-8">
     <title>CET阅卷系统</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/iconfont.css" rel="stylesheet" type="text/css" />
+    <link href="css/test.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .table1 table {
+            width:100%;
+            margin:15px 0;
+            border:0;
+        }
+        .table1,.table1 td {
+            font-size:0.95em;
+            text-align:center;
+            padding-left:70px;
+            padding-right:70px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-collapse:collapse;
+        }
+        .table1 td {
+            border: 1px solid #2087fe;
+            border-width:1px 0 1px 0;
+            border:2px inset #ffffff;
+        }
+        .table1 tr {
+            border: 1px solid #ffffff;
+            font-size: medium;
+        }
+        .table1 tr:nth-child(odd){
+            background-color:#aae1fe;
+        }
+        .table1 tr:nth-child(even){
+            background-color:#ffffff;
+        }
+    </style>
 </head>
 
 <body>
-    <button type="button" id="btn_refresh_answ" onclick="btn_refresh_answ_onClick()">刷新作答列表</button>
-    <h4>作答列表：</h4>
-    <table border="1" id="table_answers">
-        <tr>
-            <td>用户名</td>
-            <td>选择题得分</td>
-            <td>主观题得分</td>
-            <td>阅卷按钮</td>
-        </tr>
-        <tr>
-            <td>测试学生</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </table>
+	<div class="main">
+		<!--nr start-->
+		<div class="test_main">
+			<div class="nr_left">
+				<div class="test">
+					<form action="" method="post">
+						<div class="test_title">
+                            <!-- 刷新作答列表 -->
+							<font><input type="button" id="btn_refresh_answ" onclick="btn_refresh_answ_onClick()" value="刷新列表"></font>
+						</div>
+                        <!-- 作答列表 -->
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>作答列表</h2>
+                            </div>
+                            <div class="test_content_nr">
+                                <ul>
+                                    <table class="table1" id="table_answers">
+                                        <tr>
+                                            <td>用户名</td>
+                                            <td>选择题得分</td>
+                                            <td>主观题得分</td>
+                                            <td>阅卷按钮</td>
+                                        </tr>
+                                        <tr>
+                                            <td>测试学生</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                        </tr>
+                                    </table>
+                                </ul>
+                            </div>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--nr end-->
+		<div class="foot"></div>
+	</div>
 
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.easy-pie-chart.js"></script>
 
 </body>
 
