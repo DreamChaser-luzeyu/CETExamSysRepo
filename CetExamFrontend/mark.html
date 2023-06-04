@@ -13,24 +13,27 @@
 </head>
 
 <body>
-	<div class="main">
-		<!--nr start-->
-		<div class="test_main">
-			<div class="nr_left">
-				<div class="test">
-					<form action="" method="post">
-						<div class="test_title">
-							<font><input type="button" name="btn_submit" value="提交" onclick="btn_submit_onclick()"></font>
-						</div>
+    <div class="main">
+        <!--nr start-->
+        <div class="test_main">
+            <div class="nr_left">
+                <div class="test">
+                    <form action="" method="post">
+                        <div class="test_title">
+                            <font><input type="button" name="btn_submit" value="提交" onclick="btn_submit_onclick()">
+                            </font>
+                        </div>
                         <!-- 单选题 -->
                         <div class="test_content">
                             <label for="username" style="font-size:medium;">考生用户名：</label>
-                            <input type="text" id="userName" style="width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
+                            <input type="text" id="userName"
+                                style="width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
 
                             <div class="test_content_title">
                                 <h2>一、单选题</h2>
                                 <p>
-                                    <span>共</span><i class="content_lit">10</i><span>题，</span><span>合计</span><i class="content_fs">10</i><span>分</span>
+                                    <span>共</span><i class="content_lit">10</i><span>题，</span><span>合计</span><i
+                                        class="content_fs">10</i><span>分</span>
                                 </p>
                             </div>
                             <!-- 客观题自动阅卷 -->
@@ -38,25 +41,29 @@
                                 <ul>
                                     <li id="qu_1">
                                         <div class="test_content_nr_tt">
-							                <input type="button" name="btn_auto_judge" value="自动阅卷" onclick="btn_auto_check_onClick()">
+                                            <input type="button" name="btn_auto_judge" value="自动阅卷"
+                                                onclick="btn_auto_check_onClick()">
                                         </div>
                                         <!-- TODO 点击自动阅卷，展示考生客观题得分 -->
                                         <div class="test_content_nr_main">
-									        <label>客观题得分：</label>
-                                            <input type="text" id="Choice" style="width: 30px; border-left: none; border-top: none; border-right: none;" readonly>
+                                            <label>客观题得分：</label>
+                                            <input type="text" id="Choice"
+                                                style="width: 30px; border-left: none; border-top: none; border-right: none;"
+                                                readonly>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        
+
 
                         <!-- 主观题 -->
                         <div class="test_content">
                             <div class="test_content_title">
                                 <h2>二、主观题</h2>
                                 <p>
-                                    <span>共</span><i class="content_lit">2</i><span>题，</span><span>合计</span><i class="content_fs">30</i><span>分</span>
+                                    <span>共</span><i class="content_lit">2</i><span>题，</span><span>合计</span><i
+                                        class="content_fs">30</i><span>分</span>
                                 </p>
                             </div>
                         </div>
@@ -65,7 +72,7 @@
                             <ul>
                                 <li id="qu_2_1">
                                     <div class="test_content_nr_tt">
-                                        <i>1</i><span>Writing  (15分)</span>
+                                        <i>1</i><span>Writing (15分)</span>
                                         <b class="icon iconfont">
                                             该题得分：
                                             <!-- TODO 判断输入是否合法 -->
@@ -74,47 +81,50 @@
                                         </b>
                                     </div>
                                     <div class="test_content_nr_main">
-                                        <textarea id ="2_answer_1" cols="100" rows="10" style="overflow:scroll;" readonly></textarea>
+                                        <textarea id="2_answer_1" cols="100" rows="10" style="overflow:scroll;"
+                                            readonly></textarea>
                                     </div>
                                 </li>
 
                                 <li id="qu_2_2">
                                     <div class="test_content_nr_tt">
-                                        <i>2</i><span>Translation  (15分)</span>
+                                        <i>2</i><span>Translation (15分)</span>
                                         <b class="icon iconfont">
                                             该题得分：
                                             <!-- TODO 判断输入是否合法 -->
                                             <!-- <input type="number" oninput="if(value>15)value=15;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" id="translation_score" style="width: 50px;height: 20px; "> -->
-                                            <input type="text" id="translation_score" style="width: 50px;height: 20px; ">
+                                            <input type="text" id="translation_score"
+                                                style="width: 50px;height: 20px; ">
                                         </b>
                                     </div>
                                     <div class="test_content_nr_main">
-                                        <textarea id ="2_answer_2" cols="100" rows="10" style="overflow:scroll;" readonly></textarea>
+                                        <textarea id="2_answer_2" cols="100" rows="10" style="overflow:scroll;"
+                                            readonly></textarea>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!--nr end-->
-		<div class="foot"></div>
-	</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--nr end-->
+        <div class="foot"></div>
+    </div>
 
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/jquery.easy-pie-chart.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.easy-pie-chart.js"></script>
 
     <!-- TODO 显示考生主观题作答内容 -->
-<script>
-    var backendUrl = "http://127.0.0.1:28080";
+    <script>
+        var backendUrl = "http://127.0.0.1:28080";
 
-    const searchParams = new URLSearchParams(window.location.search);
-    stuUserName = searchParams.get("stuUserName");
-    console.log("stuUserName:", stuUserName);
+        const searchParams = new URLSearchParams(window.location.search);
+        stuUserName = searchParams.get("stuUserName");
+        console.log("stuUserName:", stuUserName);
 
-    var httpRequestGetAnswer = new XMLHttpRequest();
-    httpRequestGetAnswer.open('POST', backendUrl + "/ExamController/getAnswerByStuUserName", true);
+        var httpRequestGetAnswer = new XMLHttpRequest();
+        httpRequestGetAnswer.open('POST', backendUrl + "/ExamController/getAnswerByStuUserName", true);
         // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
         httpRequestGetAnswer.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         httpRequestGetAnswer.withCredentials = true;
@@ -128,26 +138,26 @@
 
                 var feedback = JSON.parse(json).feedback;
 
-                if(feedback == "success") {
+                if (feedback == "success") {
                     var message = JSON.parse(json).message;
                     // TODO:显示主观题内容
-                    document.getElementById("Choice").value = message;
+                    document.getElementById("2_answer_1").value = message;
                 }
 
-                if(feedback == "unknown_error") {
+                if (feedback == "unknown_error") {
                     alert("未知错误，请重试，如继续报错，请联系技术支持。");
                 }
             }
         };
 
 
-    document.getElementById("userName").value = stuUserName;
+        document.getElementById("userName").value = stuUserName;
 
 
-    function btn_auto_check_onClick() {
-        console.log("btn_auto_check_onClick 被点击！");
-        var httpRequestChoiceQuestion = new XMLHttpRequest();
-        httpRequestChoiceQuestion.open('POST', backendUrl + "/ExamController/judgeChoiceQuestion", true);
+        function btn_auto_check_onClick() {
+            console.log("btn_auto_check_onClick 被点击！");
+            var httpRequestChoiceQuestion = new XMLHttpRequest();
+            httpRequestChoiceQuestion.open('POST', backendUrl + "/ExamController/judgeChoiceQuestion", true);
             // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
             httpRequestChoiceQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             httpRequestChoiceQuestion.withCredentials = true;
@@ -160,85 +170,87 @@
                     console.log(json);
 
                     var feedback = JSON.parse(json).feedback;
-    
-                    if(feedback == "success") {
+
+                    if (feedback == "success") {
                         alert("客观题阅卷成功！");
                         var message = JSON.parse(json).message;
+                        var messageParsed = JSON.parse(message);
                         // TODO: 设置返回分数
-                        document.getElementById("Choice").value = message;
+                        document.getElementById("Choice").value = messageParsed.choice_question_grade;
+                        console.log(messageParsed.choice_question_grade);
                     }
 
-                    if(feedback == "unknown_error") {
-                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                    }
-                }
-            };
-    }
-
-    function btn_submit_onclick(){
-        console.log("btn_submit_onclick 被点击！");
-        var writing_score = document.getElementById("writing_score").value;
-        var translation_score = document.getElementById("translation_score").value;
-        console.log("writing_score:", writing_score);
-        console.log("translation_score:", translation_score);
-
-        if (writing_score=="" || translation_score==""){
-            alert("写作/翻译分数未填！");
-        }
-        else{
-            var httpRequestWritingQuestion = new XMLHttpRequest();
-            httpRequestWritingQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
-            // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-            httpRequestWritingQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            httpRequestWritingQuestion.withCredentials = true;
-            httpRequestWritingQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + writing_score);
-            httpRequestWritingQuestion.onreadystatechange = function () {
-                // 验证请求是否发送成功
-                if (httpRequestWritingQuestion.readyState == 4) {
-                    console.log("HTTP Status Code: " + httpRequestWritingQuestion.status);
-                    var json = httpRequestWritingQuestion.responseText;
-                    console.log(json);
-
-                    var feedback = JSON.parse(json).feedback;
-    
-                    if(feedback == "success") {
-                        alert("写作分数上传成功！");
-                    }
-
-                    if(feedback == "unknown_error") {
-                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                    }
-                }
-            };
-
-            var httpRequestTranslationQuestion = new XMLHttpRequest();
-            httpRequestTranslationQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
-            // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-            httpRequestTranslationQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            httpRequestTranslationQuestion.withCredentials = true;
-            httpRequestTranslationQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + translation_score);
-            httpRequestTranslationQuestion.onreadystatechange = function () {
-                // 验证请求是否发送成功
-                if (httpRequestTranslationQuestion.readyState == 4) {
-                    console.log("HTTP Status Code: " + httpRequestTranslationQuestion.status);
-                    var json = httpRequestTranslationQuestion.responseText;
-                    console.log(json);
-
-                    var feedback = JSON.parse(json).feedback;
-    
-                    if(feedback == "success") {
-                        alert("翻译分数上传成功！");
-                    }
-
-                    if(feedback == "unknown_error") {
+                    if (feedback == "unknown_error") {
                         alert("未知错误，请重试，如继续报错，请联系技术支持。");
                     }
                 }
             };
         }
-    }
+
+        function btn_submit_onclick() {
+            console.log("btn_submit_onclick 被点击！");
+            var writing_score = document.getElementById("writing_score").value;
+            var translation_score = document.getElementById("translation_score").value;
+            console.log("writing_score:", writing_score);
+            console.log("translation_score:", translation_score);
+
+            if (writing_score == "" || translation_score == "") {
+                alert("写作/翻译分数未填！");
+            }
+            else {
+                var httpRequestWritingQuestion = new XMLHttpRequest();
+                httpRequestWritingQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
+                // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+                httpRequestWritingQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                httpRequestWritingQuestion.withCredentials = true;
+                httpRequestWritingQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + writing_score);
+                httpRequestWritingQuestion.onreadystatechange = function () {
+                    // 验证请求是否发送成功
+                    if (httpRequestWritingQuestion.readyState == 4) {
+                        console.log("HTTP Status Code: " + httpRequestWritingQuestion.status);
+                        var json = httpRequestWritingQuestion.responseText;
+                        console.log(json);
+
+                        var feedback = JSON.parse(json).feedback;
+
+                        if (feedback == "success") {
+                            alert("写作分数上传成功！");
+                        }
+
+                        if (feedback == "unknown_error") {
+                            alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                        }
+                    }
+                };
+
+                var httpRequestTranslationQuestion = new XMLHttpRequest();
+                httpRequestTranslationQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
+                // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+                httpRequestTranslationQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                httpRequestTranslationQuestion.withCredentials = true;
+                httpRequestTranslationQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + translation_score);
+                httpRequestTranslationQuestion.onreadystatechange = function () {
+                    // 验证请求是否发送成功
+                    if (httpRequestTranslationQuestion.readyState == 4) {
+                        console.log("HTTP Status Code: " + httpRequestTranslationQuestion.status);
+                        var json = httpRequestTranslationQuestion.responseText;
+                        console.log(json);
+
+                        var feedback = JSON.parse(json).feedback;
+
+                        if (feedback == "success") {
+                            alert("翻译分数上传成功！");
+                        }
+
+                        if (feedback == "unknown_error") {
+                            alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                        }
+                    }
+                };
+            }
+        }
 
 
-</script>
+    </script>
 
 </body>
