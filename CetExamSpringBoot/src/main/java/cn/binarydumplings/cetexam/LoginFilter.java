@@ -32,6 +32,7 @@ public class LoginFilter implements Filter {
             "/StuManagement/(.*)",
             "/ExamController/answerChoiceQuestion(.*)",
             "/ExamController/answerSubjectiveQuestion(.*)",
+            "/ExamController/inquiryScore(.*)",
     };
 
     // 教师用户允许访问的页面

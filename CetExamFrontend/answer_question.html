@@ -1,16 +1,677 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>CET考试系统答题</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>CET考试系统答题</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/test.css" rel="stylesheet" type="text/css" />
+
+<style>
+.hasBeenAnswer {
+	background: #5d9cec;
+	color:#fff;
+}
+
+</style>
 </head>
 
 <body>
     <h1>试题下载</h1>
     <a href="exam.pdf">点击下载试题</a>
-    <h1>作答区域</h1>
+	<div class="main">
+		<!--nr start-->
+		<div class="test_main">
+			<div class="nr_left">
+				<div class="test">
+					<form action="" method="post">
+						<div class="test_title">
+							<p class="test_time">
+								<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">01:40</b>
+							</p>
+							<font><input type="button" name="test_jiaojuan" value="交卷" onclick="btn_send_answer_onClick()"></font>
+                            <a href="exam.pdf" target="_blank">
+                                <input type="button" name="open_exam" value="打开试题" style="border: none; background-color: #389fc3; font-size: medium; color: white; padding: 12px 10px;">
+                            </a >
+						</div>
+                        <!-- 单选题 -->
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>一、单选题</h2>
+                                <p>
+                                    <span>共</span><i class="content_lit">10</i><span>题，</span><span>合计</span><i class="content_fs">10</i><span>分</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="test_content_nr">
+                            <ul>
+                                <li id="qu_1_1" >
+                                    <div class="test_content_nr_tt">
+                                        <i>1</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer1" value="A"
+                                                    id="1_answer_1_option_1"
+                                                />
+                                                <label for="1_answer_1_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer1" value="B"
+                                                    id="1_answer_1_option_2"
+                                                />
+                                                <label for="1_answer_1_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer1" value="C"
+                                                    id="1_answer_1_option_3"
+                                                />
+                                                <label for="1_answer_1_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer1" value="D"
+                                                    id="1_answer_1_option_4"
+                                                />
+                                                <label for="1_answer_1_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_2">
+                                    <div class="test_content_nr_tt">
+                                        <i>2</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer2" value="A"
+                                                    id="1_answer_2_option_1"
+                                                />
+                                                <label for="1_answer_2_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer2" value="B"
+                                                    id="1_answer_2_option_2"
+                                                />
+                                                <label for="1_answer_2_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer2" value="C"
+                                                    id="1_answer_2_option_3"
+                                                />
+                                                <label for="1_answer_2_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer2" value="D"
+                                                    id="1_answer_2_option_4"
+                                                />
+                                                <label for="1_answer_2_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_3">
+                                    <div class="test_content_nr_tt">
+                                        <i>3</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer3" value="A"
+                                                    id="1_answer_3_option_1"
+                                                />
+                                                <label for="1_answer_3_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer3" value="B"
+                                                    id="1_answer_3_option_2"
+                                                />
+                                                <label for="1_answer_3_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer3" value="C"
+                                                    id="1_answer_3_option_3"
+                                                />
+                                                <label for="1_answer_3_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer3" value="D"
+                                                    id="1_answer_3_option_4"
+                                                />
+                                                <label for="1_answer_3_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_4">
+                                    <div class="test_content_nr_tt">
+                                        <i>4</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer4" value="A"
+                                                    id="1_answer_4_option_1"
+                                                />
+                                                <label for="1_answer_4_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer4" value="B"
+                                                    id="1_answer_4_option_2"
+                                                />
+                                                <label for="1_answer_4_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer4" value="C"
+                                                    id="1_answer_4_option_3"
+                                                />
+                                                <label for="1_answer_4_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer4" value="D"
+                                                    id="1_answer_4_option_4"
+                                                />
+                                                <label for="1_answer_4_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_5">
+                                    <div class="test_content_nr_tt">
+                                        <i>5</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer5" value="A"
+                                                    id="1_answer_5_option_1"
+                                                />
+                                                <label for="1_answer_5_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer5" value="B"
+                                                    id="1_answer_5_option_2"
+                                                />
+                                                <label for="1_answer_5_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer5" value="C"
+                                                    id="1_answer_5_option_3"
+                                                />
+                                                <label for="1_answer_5_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer5" value="D"
+                                                    id="1_answer_5_option_4"
+                                                />
+                                                <label for="1_answer_5_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_6">
+                                    <div class="test_content_nr_tt">
+                                        <i>6</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer6" value="A"
+                                                    id="1_answer_6_option_1"
+                                                />
+                                                <label for="1_answer_6_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer6" value="B"
+                                                    id="1_answer_6_option_2"
+                                                />
+                                                <label for="1_answer_6_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer6" value="C"
+                                                    id="1_answer_6_option_3"
+                                                />
+                                                <label for="1_answer_6_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer6" value="D"
+                                                    id="1_answer_6_option_4"
+                                                />
+                                                <label for="1_answer_6_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_7">
+                                    <div class="test_content_nr_tt">
+                                        <i>7</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer7" value="A"
+                                                    id="1_answer_7_option_1"
+                                                />
+                                                <label for="1_answer_7_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer7" value="B"
+                                                    id="1_answer_7_option_2"
+                                                />
+                                                <label for="1_answer_7_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer7" value="C"
+                                                    id="1_answer_7_option_3"
+                                                />
+                                                <label for="1_answer_7_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer7" value="D"
+                                                    id="1_answer_7_option_4"
+                                                />
+                                                <label for="1_answer_7_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_8">
+                                    <div class="test_content_nr_tt">
+                                        <i>8</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer8" value="A"
+                                                    id="1_answer_8_option_1"
+                                                />
+                                                <label for="1_answer_8_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer8" value="B"
+                                                    id="1_answer_8_option_2"
+                                                />
+                                                <label for="1_answer_8_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer8" value="C"
+                                                    id="1_answer_8_option_3"
+                                                />
+                                                <label for="1_answer_8_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer8" value="D"
+                                                    id="1_answer_8_option_4"
+                                                />
+                                                <label for="1_answer_8_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_9">
+                                    <div class="test_content_nr_tt">
+                                        <i>9</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer9" value="A"
+                                                    id="1_answer_9_option_1"
+                                                />
+                                                <label for="1_answer_9_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer9" value="B"
+                                                    id="1_answer_9_option_2"
+                                                />
+                                                <label for="1_answer_9_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer9" value="C"
+                                                    id="1_answer_9_option_3"
+                                                />
+                                                <label for="1_answer_9_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer9" value="D"
+                                                    id="1_answer_9_option_4"
+                                                />
+                                                <label for="1_answer_9_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li id="qu_1_10">
+                                    <div class="test_content_nr_tt">
+                                        <i>10</i><span>(1分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <ul name="single">
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer10" value="A"
+                                                    id="1_answer_10_option_1"
+                                                />
+                                                <label for="1_answer_10_option_1">
+                                                    A
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer10" value="B"
+                                                    id="1_answer_10_option_2"
+                                                />
+                                                <label for="1_answer_10_option_2">
+                                                    B
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer10" value="C"
+                                                    id="1_answer_10_option_3"
+                                                />
+                                                <label for="1_answer_10_option_3">
+                                                    C
+                                                </label>
+                                            </li>
+                                            <li class="option">
+                                                <input type="radio" class="radioOrCheck" name="answer10" value="D"
+                                                    id="1_answer_10_option_4"
+                                                />
+                                                <label for="1_answer_10_option_4">
+                                                    D
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 主观题 -->
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>二、主观题</h2>
+                                <p>
+                                    <span>共</span><i class="content_lit">2</i><span>题，</span><span>合计</span><i class="content_fs">30</i><span>分</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="test_content_nr">
+                            <ul>
+                                <li id="qu_2_1" >
+                                    <div class="test_content_nr_tt">
+                                        <i>1</i><span>Writing  (15分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <textarea id ="Writing" cols="100" rows="10" style="overflow:scroll;"></textarea>
+                                    </div>
+                                </li>
+
+                                <li id="qu_2_2">
+                                    <div class="test_content_nr_tt">
+                                        <i>2</i><span>Translation  (15分)</span><b class="icon iconfont">&#xe881;</b>
+                                    </div>
+                                    <div class="test_content_nr_main">
+                                        <textarea id ="Translation" cols="100" rows="10" style="overflow:scroll;"></textarea>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+					</form>
+				</div>
+			</div>
+
+			<div class="nr_right">
+				<div class="nr_rt_main">
+					<div class="rt_nr1">
+						<div class="rt_nr1_title">
+							<h1>
+								<i class="icon iconfont">&#xe692;</i>答题卡
+							</h1>
+							<p class="test_time">
+								<i class="icon iconfont">&#xe6fb;</i><b class="alt-1">01:40</b>
+							</p>
+						</div>
+						<div class="rt_content">
+                            <div class="rt_content_tt">
+                                <h2>单选题</h2>
+                                <p>
+                                    <span>共</span><i class="content_lit">10</i><span>题</span>
+                                </p>
+                            </div>
+                            <div class="rt_content_nr answerSheet">
+                                <ul>
+                                    <li><a href="#qu_1_1">1</a></li>
+                                    <li><a href="#qu_1_2">2</a></li>
+                                    <li><a href="#qu_1_3">3</a></li>
+                                    <li><a href="#qu_1_4">4</a></li>
+                                    <li><a href="#qu_1_5">5</a></li>
+                                    <li><a href="#qu_1_6">6</a></li>
+                                    <li><a href="#qu_1_7">7</a></li>
+                                    <li><a href="#qu_1_8">8</a></li>
+                                    <li><a href="#qu_1_9">9</a></li>
+                                    <li><a href="#qu_1_10">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--nr end-->
+		<div class="foot"></div>
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.easy-pie-chart.js"></script>
+	<!--时间js-->
+	<script src="js/jquery.countdown.js"></script>
+	<script>
+		window.jQuery(function($) {
+			"use strict";
+			
+			$('time').countDown({
+				with_separators : false
+			});
+			$('.alt-1').countDown({
+				css_class : 'countdown-alt-1'
+			});
+			$('.alt-2').countDown({
+				css_class : 'countdown-alt-2'
+			});
+			
+		});
+		
+		
+		$(function() {
+			$('li.option label').click(function() {
+			// debugger;
+				var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+				var cardLi = $('a[href=#' + examId + ']'); // 根据题目ID找到对应答题卡
+				// 设置已答题
+				if(!cardLi.hasClass('hasBeenAnswer')){
+					cardLi.addClass('hasBeenAnswer');
+				}
+				
+			});
+		});
+
+        var backendUrl = "http://127.0.0.1:28080";
+
+        function btn_send_answer_onClick() {
+            var answerArr = new Array(10);
+            $("[name='single']").each(function(index){
+                //放入答案
+                var answer = $("input[name='answer"+(index+1)+"']:checked").val();
+                answerArr[index] = answer;
+            })
+            
+            var Translation = document.getElementById("Translation").value;
+            var Writing = document.getElementById("Writing").value;
+
+            console.log("客观题答案：" + answerArr);
+            console.log("翻译：" + Translation);
+            console.log("写作：" + Writing);
 
 
+
+            var object_answer = {
+                "1": answerArr[0], 
+                "2": answerArr[1], 
+                "3": answerArr[2], 
+                "4": answerArr[3], 
+                "5": answerArr[4], 
+                "6": answerArr[5], 
+                "7": answerArr[6], 
+                "8": answerArr[7], 
+                "9": answerArr[8], 
+                "10":answerArr[9],
+            }
+
+            var subject_answer = {
+                "translation": Translation,
+                "writing": Writing
+            }
+
+            console.log(object_answer);
+            console.log(JSON.stringify(subject_answer));
+
+
+            var httpRequestChoiceQuestion = new XMLHttpRequest();
+            httpRequestChoiceQuestion.open('POST', backendUrl + "/ExamController/answerChoiceQuestion", true);
+            // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+            httpRequestChoiceQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequestChoiceQuestion.withCredentials = true;
+            httpRequestChoiceQuestion.send("choiceQuestionAnswer=" + encodeURI(JSON.stringify(object_answer)));
+            httpRequestChoiceQuestion.onreadystatechange = function () {
+                // 验证请求是否发送成功
+                if (httpRequestChoiceQuestion.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequestChoiceQuestion.status);
+                    var json = httpRequestChoiceQuestion.responseText;
+                    console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
     
+                    if(feedback == "success") {
+                        alert("选择题保存成功");
+                    }
+
+                    if(feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+
+            var httpRequestSubjectiveQuestion = new XMLHttpRequest();
+            httpRequestSubjectiveQuestion.open('POST', backendUrl + "/ExamController/answerSubjectiveQuestion", true);
+            // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+            httpRequestSubjectiveQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequestSubjectiveQuestion.withCredentials = true;
+            httpRequestSubjectiveQuestion.send("subjectiveQuestionAnswer=" + encodeURI(JSON.stringify(subject_answer)));
+            httpRequestSubjectiveQuestion.onreadystatechange = function () {
+                // 验证请求是否发送成功
+                if (httpRequestSubjectiveQuestion.readyState == 4) {
+                    console.log("HTTP Status Code: " + httpRequestSubjectiveQuestion.status);
+                    var json = httpRequestSubjectiveQuestion.responseText;
+                    console.log(json);
+
+                    var feedback = JSON.parse(json).feedback;
+    
+                    if(feedback == "success") {
+                        alert("主观题保存成功");
+                    }
+
+                    if(feedback == "unknown_error") {
+                        alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                    }
+                }
+            };
+        } 
+
+
+	</script>
 </body>
+
+</html>

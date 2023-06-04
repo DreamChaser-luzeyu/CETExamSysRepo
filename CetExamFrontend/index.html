@@ -129,10 +129,13 @@
         var backendUrl = "http://127.0.0.1:28080";
     
         function btn_stu_apply_exam_onClick() {
+            console.log("apply");
+
             var httpRequest = new XMLHttpRequest();
             httpRequest.open('POST', backendUrl + "/StuManagement/applyExam", true);
-    
+            httpRequest.withCredentials = true;
             httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.send();
             httpRequest.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest.readyState == 4) {
@@ -158,8 +161,9 @@
         function btn_stu_cancel_exam_onClick() {
             var httpRequest = new XMLHttpRequest();
             httpRequest.open('POST', backendUrl + "/StuManagement/cancelExam", true);
-    
+            httpRequest.withCredentials = true;
             httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            httpRequest.send();
             httpRequest.onreadystatechange = function () {
                 // 验证请求是否发送成功
                 if (httpRequest.readyState == 4) {

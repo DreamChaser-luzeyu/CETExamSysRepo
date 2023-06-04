@@ -18,7 +18,7 @@
         <div class="test_main">
             <div class="nr_left">
                 <div class="test">
-                    <form action="" method="post">
+                    <!-- <form action="" method="post"> -->
                         <div class="test_title">
                             <font><input type="button" name="btn_submit" value="提交" onclick="btn_submit_onclick()">
                             </font>
@@ -75,9 +75,7 @@
                                         <i>1</i><span>Writing (15分)</span>
                                         <b class="icon iconfont">
                                             该题得分：
-                                            <!-- TODO 判断输入是否合法 -->
-                                            <!-- <input type="number" oninput="if(value>15)value=15;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" id="writing_score" style="width: 50px;height: 20px; "> -->
-                                            <input type="text" id="writing_score" style="width: 50px;height: 20px; ">
+                                            <input type="number" oninput="if(value>15)value=15;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" id="writing_score" style="width: 50px;height: 20px; ">
                                         </b>
                                     </div>
                                     <div class="test_content_nr_main">
@@ -91,10 +89,7 @@
                                         <i>2</i><span>Translation (15分)</span>
                                         <b class="icon iconfont">
                                             该题得分：
-                                            <!-- TODO 判断输入是否合法 -->
-                                            <!-- <input type="number" oninput="if(value>15)value=15;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" id="translation_score" style="width: 50px;height: 20px; "> -->
-                                            <input type="text" id="translation_score"
-                                                style="width: 50px;height: 20px; ">
+                                            <input type="number" oninput="if(value>15)value=15;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" id="translation_score" style="width: 50px;height: 20px; ">
                                         </b>
                                     </div>
                                     <div class="test_content_nr_main">
@@ -104,7 +99,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -115,7 +110,6 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.easy-pie-chart.js"></script>
 
-    <!-- TODO 显示考生主观题作答内容 -->
     <script>
         var backendUrl = "http://127.0.0.1:28080";
 
@@ -132,7 +126,7 @@
         httpRequestGetAnswer.onreadystatechange = function () {
             // 验证请求是否发送成功
             if (httpRequestGetAnswer.readyState == 4) {
-                console.log("HTTP Status Code: " + httpRequestGetAnswer.status);
+                // console.log("HTTP Status Code: " + httpRequestGetAnswer.status);
                 var json = httpRequestGetAnswer.responseText;
                 console.log(json);
 
@@ -140,8 +134,12 @@
 
                 if (feedback == "success") {
                     var message = JSON.parse(json).message;
+                    var subjectAnswParsed = JSON.parse(JSON.parse(message).subjectiveQuestionAnswer);
+                    console.log("Parsed subjective answ:");
+                    console.log("Parsed subjective answ:" + subjectAnswParsed);
                     // TODO:显示主观题内容
-                    document.getElementById("2_answer_1").value = message;
+                    document.getElementById("2_answer_1").value = subjectAnswParsed.writing;
+                    document.getElementById("2_answer_2").value = subjectAnswParsed.translation;
                 }
 
                 if (feedback == "unknown_error") {
@@ -203,7 +201,7 @@
                 // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
                 httpRequestWritingQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 httpRequestWritingQuestion.withCredentials = true;
-                httpRequestWritingQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + writing_score);
+                httpRequestWritingQuestion.send("stuUserName=" + stuUserName + "&subjectiveQuestionGrade=" + writing_score);
                 httpRequestWritingQuestion.onreadystatechange = function () {
                     // 验证请求是否发送成功
                     if (httpRequestWritingQuestion.readyState == 4) {
@@ -228,7 +226,7 @@
                 // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
                 httpRequestTranslationQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 httpRequestTranslationQuestion.withCredentials = true;
-                httpRequestTranslationQuestion.send("stuUserName=" + stuUserName + "subjectiveQuestionGrade=" + translation_score);
+                httpRequestTranslationQuestion.send("stuUserName=" + stuUserName + "&subjectiveQuestionGrade=" + (parseInt(translation_score) + parseInt(writing_score)));
                 httpRequestTranslationQuestion.onreadystatechange = function () {
                     // 验证请求是否发送成功
                     if (httpRequestTranslationQuestion.readyState == 4) {

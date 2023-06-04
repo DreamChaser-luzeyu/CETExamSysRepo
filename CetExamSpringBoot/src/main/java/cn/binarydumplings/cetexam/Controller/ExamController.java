@@ -143,6 +143,14 @@ public class ExamController {
         return responseData;
     }
 
+    @RequestMapping("/inquiryScore")
+    public ResponseData inquiryScore(HttpServletRequest request) {
+        ResponseData responseData = ResponseData.GenericSuccessFeedback;
+        Answer answer = answerService.getAnswerByStuUserName(UserSessionUtils.getUserName(request));
+        responseData.setMessage(JSONObject.toJSONString(answer));
+        return responseData;
+    }
+
 //    public static Integer gradeChoiceQuestionAnswer(String correctAnswer, String stuAnswer) {
 //        return 100;
 //    }

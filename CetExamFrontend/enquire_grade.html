@@ -56,21 +56,21 @@
 					<form action="" method="post">
                         <div class="test_content">
                             <div class="test_content_title">
-                                <h2>一、考生信息</h2>
+                                <!-- <h2>一、考生信息</h2> -->
                             </div>
                             <div class="test_content_nr">
                                 <ul>
                                     <li id="information">
                                         <!-- 用户名 -->
-                                        <div class="test_content_nr_main">
+                                        <!-- <div class="test_content_nr_main">
 							                <label for="username" style="font-size:medium;">用户名：</label>
                                             <input type="text" id="input_userName" class="form-control" style="font-size:medium; width: 200px;" required autofocus>
-                                        </div>
+                                        </div> -->
                                         <!-- 密码 -->
-                                        <div class="test_content_nr_main">
+                                        <!-- <div class="test_content_nr_main">
 									        <label for="password" style="font-size:medium;">密码：</label>
                                             <input type="password" id="input_password" class="form-control" style="font-size:medium; width: 200px;" required data-eye>
-                                        </div>
+                                        </div> -->
                                         <!-- 查询按钮 -->
                                         <div class="test_content_nr_main">
                                             <button type="button" id="btn_enquire" class="btn btn-primary btn-block" style="font-size:medium; width: 100px;"
@@ -87,7 +87,7 @@
                         <!-- 成绩详情 -->
                         <div class="test_content">
                             <div class="test_content_title">
-                                <h2>二、成绩详情</h2>
+                                <h2>成绩详情</h2>
                             </div>
                         </div>
                         <div class="test_content_nr">
@@ -95,31 +95,25 @@
                                 <li id="grade_info">
                                     <div class="test_content_nr_tt">
                                         <!-- 考生名 -->
-                                        <label for="userName" style="font-size:medium;">考生名：</label>
+                                        <label for="userName" style="font-size:medium;">用户名：</label>
                                         <input type="text" id="userName" style="font-size: medium; width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
                                         <!-- 总分 -->
                                         <label for="grade" style="font-size:medium;">总分：</label>
-                                        <input type="text" id="grade" style="font-size: medium; width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
+                                        <input type="text" id="totalGrade" style="font-size: medium; width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
                                     </div>
                                     <!-- 每题得分 -->
                                     <div class="test_content_nr_main">
                                         <table class=table11_3>
                                             <tr>
-                                                <td>选择</td>
+                                                <td>客观题</td>
                                                 <td>
                                                     <input type="text" id="choice_grade" style="width: 40px; border: none; background-color:#aae1fe;" readonly>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>写作</td>
+                                                <td>主观题</td>
                                                 <td>
-                                                    <input type="text" id="writing_grade" style="width: 40px; border: none; background-color:#ffffff;" readonly>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>翻译</td>
-                                                <td>
-                                                    <input type="text" id="translation_grade" style="width: 40px; border: none; background-color:#aae1fe;" readonly>
+                                                    <input type="text" id="subjective_grade" style="width: 40px; border: none; background-color:#ffffff;" readonly>
                                                 </td>
                                             </tr>
                                         </table>
@@ -139,9 +133,49 @@
 	<script src="js/jquery.easy-pie-chart.js"></script>
 
     <script>
+        var backendUrl = "http://127.0.0.1:28080";
+
         // TODO 点击查询按钮，查询信息是否存在
         // TODO 显示考生名、总分、选择得分、写作得分、翻译得分
         function btn_enquire_onClick(){
+            var httpRequestScore = new XMLHttpRequest();
+                httpRequestScore.open('GET', backendUrl + "/ExamController/inquiryScore", true);
+                // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+                httpRequestScore.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                httpRequestScore.withCredentials = true;
+                httpRequestScore.send();
+                console.log("查询中...");
+                httpRequestScore.onreadystatechange = function () {
+                    // 验证请求是否发送成功
+                    if (httpRequestScore.readyState == 4) {
+                        console.log("HTTP Status Code: " + httpRequestScore.status);
+                        var json = httpRequestScore.responseText;
+                        console.log(json);
+
+                        var feedback = JSON.parse(json).feedback;
+
+                        if (feedback == "success") {
+                            alert("查询成功！");
+
+                            var message = JSON.parse(json).message;
+                            var messageParsed = JSON.parse(message);
+
+                            document.getElementById("userName").value = messageParsed.stuUserName;
+                            document.getElementById("choice_grade").value = messageParsed.choiceQuestionGrade;
+                            document.getElementById("subjective_grade").value = messageParsed.subjectiveQuestionGrade;
+                            document.getElementById("totalGrade").value = parseInt(messageParsed.choiceQuestionGrade) + parseInt(messageParsed.subjectiveQuestionGrade);
+                            
+                        }
+
+                        if (feedback == "unknown_error") {
+                            alert("未知错误，请重试，如继续报错，请联系技术支持。");
+                        }
+                    }
+                };
+
+
+
+
 
         }
 
