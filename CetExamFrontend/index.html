@@ -110,19 +110,13 @@
                     </div>
                 </div>
                 <div class="funbox fun04" style="float:right;margin-left:0">
-                    <div class="fun-title"> 考生服务 </div>
+                    <div class="fun-title"> 师生服务 </div>
                     <div class="fun-con2">
                         <dl>
-                            <!-- <dd><a href="http://cet-bm.neea.edu.cn/" target="_blank">在线报名</a></dd>
-                            <dd><a id="results_CET" href="//cet.neea.edu.cn/cet/" target="_blank">成绩查询</a></dd>
-                            <dd><a href="//bbcjzm.neea.edu.cn/" target="_blank">补办成绩证明</a></dd>
-                            <dd><a href="/html1/category/16123/566-1.htm" style="font-size:12px">口语考试系统培训</a></dd>
-                            <dd><a href="/html1/folder/19081/5179-1.htm">成绩核查</a></dd>
-                            <dd><a href="/html1/folder/19081/5180-1.htm">成绩证明</a></dd> -->
-
                             <dd><button type="button" id="btn_stu_apply_exam" onclick="btn_stu_apply_exam_onClick()">报名考试</button></dd>
                             <dd><button type="button" id="btn_stu_cancel_exam" onclick="btn_stu_cancel_exam_onClick()">取消报名</button></dd>
                             <dd><button type="button" id="btn_stu_answ_exam" onclick="btn_stu_answ_exam_onClick()">学生答题</button></dd>
+                            <dd><button type="button" id="btn_stu_enquire_grade" onclick="btn_stu_enquire_grade_onClick()">成绩查询</button></dd>
                             <dd><button type="button" id="btn_tea_judge" onclick="btn_tea_judge_onClick()">教师阅卷</button></dd>
                         </dl>
                     </div>
@@ -194,6 +188,10 @@
     
         function btn_tea_judge_onClick() {
             window.location.href = "judge_question.html";
+        }
+
+        function btn_stu_enquire_grade_onClick(){
+            window.location.href = "enquire_grade.html";
         }
     </script>
 </body>

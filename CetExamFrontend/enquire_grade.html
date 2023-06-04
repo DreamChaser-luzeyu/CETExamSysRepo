@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CET考试成绩查询</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/iconfont.css" rel="stylesheet" type="text/css" />
+    <link href="css/test.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/my-login.css">
+
+    <style>
+        .table11_3 table {
+            width:100%;
+            margin:15px 0;
+            border:0;
+        }
+        .table11_3,.table11_3 td {
+            font-size:0.95em;
+            text-align:center;
+            padding-left:70px;
+            padding-right:70px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-collapse:collapse;
+        }
+        .table11_3 td {
+            border: 1px solid #2087fe;
+            border-width:1px 0 1px 0;
+            border:2px inset #ffffff;
+        }
+        .table11_3 tr {
+            border: 1px solid #ffffff;
+            font-size: medium;
+        }
+        .table11_3 tr:nth-child(odd){
+            background-color:#aae1fe;
+        }
+        .table11_3 tr:nth-child(even){
+            background-color:#ffffff;
+        }
+    </style>
+
+</head>
+
+
+<body>
+	<div class="main">
+		<!--nr start-->
+		<div class="test_main">
+			<div class="nr_left">
+				<div class="test">
+					<form action="" method="post">
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>一、考生信息</h2>
+                            </div>
+                            <div class="test_content_nr">
+                                <ul>
+                                    <li id="information">
+                                        <!-- 用户名 -->
+                                        <div class="test_content_nr_main">
+							                <label for="username" style="font-size:medium;">用户名：</label>
+                                            <input type="text" id="input_userName" class="form-control" style="font-size:medium; width: 200px;" required autofocus>
+                                        </div>
+                                        <!-- 密码 -->
+                                        <div class="test_content_nr_main">
+									        <label for="password" style="font-size:medium;">密码：</label>
+                                            <input type="password" id="input_password" class="form-control" style="font-size:medium; width: 200px;" required data-eye>
+                                        </div>
+                                        <!-- 查询按钮 -->
+                                        <div class="test_content_nr_main">
+                                            <button type="button" id="btn_enquire" class="btn btn-primary btn-block" style="font-size:medium; width: 100px;"
+                                                onclick="btn_enquire_onClick()">
+                                                查询
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+
+                        <!-- 成绩详情 -->
+                        <div class="test_content">
+                            <div class="test_content_title">
+                                <h2>二、成绩详情</h2>
+                            </div>
+                        </div>
+                        <div class="test_content_nr">
+                            <ul>
+                                <li id="grade_info">
+                                    <div class="test_content_nr_tt">
+                                        <!-- 考生名 -->
+                                        <label for="userName" style="font-size:medium;">考生名：</label>
+                                        <input type="text" id="userName" style="font-size: medium; width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
+                                        <!-- 总分 -->
+                                        <label for="grade" style="font-size:medium;">总分：</label>
+                                        <input type="text" id="grade" style="font-size: medium; width: 100px; border-left: none; border-top: none; border-right: none;" readonly>
+                                    </div>
+                                    <!-- 每题得分 -->
+                                    <div class="test_content_nr_main">
+                                        <table class=table11_3>
+                                            <tr>
+                                                <td>选择</td>
+                                                <td>
+                                                    <input type="text" id="choice_grade" style="width: 40px; border: none; background-color:#aae1fe;" readonly>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>写作</td>
+                                                <td>
+                                                    <input type="text" id="writing_grade" style="width: 40px; border: none; background-color:#ffffff;" readonly>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>翻译</td>
+                                                <td>
+                                                    <input type="text" id="translation_grade" style="width: 40px; border: none; background-color:#aae1fe;" readonly>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--nr end-->
+		<div class="foot"></div>
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.easy-pie-chart.js"></script>
+
+    <script>
+        // TODO 点击查询按钮，查询信息是否存在
+        // TODO 显示考生名、总分、选择得分、写作得分、翻译得分
+        function btn_enquire_onClick(){
+
+        }
+
+    </script>
+</body>
+</html>
