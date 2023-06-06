@@ -196,30 +196,6 @@
                 alert("写作/翻译分数未填！");
             }
             else {
-                var httpRequestWritingQuestion = new XMLHttpRequest();
-                httpRequestWritingQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
-                // 设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-                httpRequestWritingQuestion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                httpRequestWritingQuestion.withCredentials = true;
-                httpRequestWritingQuestion.send("stuUserName=" + stuUserName + "&subjectiveQuestionGrade=" + writing_score);
-                httpRequestWritingQuestion.onreadystatechange = function () {
-                    // 验证请求是否发送成功
-                    if (httpRequestWritingQuestion.readyState == 4) {
-                        console.log("HTTP Status Code: " + httpRequestWritingQuestion.status);
-                        var json = httpRequestWritingQuestion.responseText;
-                        console.log(json);
-
-                        var feedback = JSON.parse(json).feedback;
-
-                        if (feedback == "success") {
-                            alert("写作分数上传成功！");
-                        }
-
-                        if (feedback == "unknown_error") {
-                            alert("未知错误，请重试，如继续报错，请联系技术支持。");
-                        }
-                    }
-                };
 
                 var httpRequestTranslationQuestion = new XMLHttpRequest();
                 httpRequestTranslationQuestion.open('POST', backendUrl + "/ExamController/judgeSubjectiveQuestion", true);
@@ -237,7 +213,7 @@
                         var feedback = JSON.parse(json).feedback;
 
                         if (feedback == "success") {
-                            alert("翻译分数上传成功！");
+                            alert("写作/翻译分数上传成功！");
                         }
 
                         if (feedback == "unknown_error") {
